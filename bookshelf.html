@@ -4,17 +4,3091 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>书库 - 网页书架</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg-primary:#F5F5F7;--bg-secondary:#FFF;--bg-tertiary:#EEE;--bg-hover:#E8E8ED;--bg-active:#D2D2D7;--text-primary:#1D1D1F;--text-secondary:#6E6E73;--text-tertiary:#A1A1A6;--text-inverse:#FFF;--accent:#C4A882;--accent-light:#E8DCC8;--accent-dark:#8B7355;--border:rgba(0,0,0,.06);--shadow-sm:0 1px 3px rgba(0,0,0,.04);--shadow-md:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 8px 30px rgba(0,0,0,.12);--shadow-xl:0 20px 60px rgba(0,0,0,.15);--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;--ease-out-expo:cubic-bezier(.16,1,.3,1);--ease-out-back:cubic-bezier(.34,1.56,.64,1);--ease-spring:cubic-bezier(.175,.885,.32,1.275);--ease-smooth:cubic-bezier(.4,0,.2,1);--transition:250ms var(--ease-smooth);--transition-slow:500ms var(--ease-out-expo);--mica-bg:rgba(245,245,247,.72);--mica-border:rgba(255,255,255,.18);--acrylic-bg:rgba(255,255,255,.65);--acrylic-border:rgba(255,255,255,.25);--blur-heavy:blur(40px) saturate(200%);--blur-acrylic:blur(30px) saturate(150%) brightness(1.05);--font-display:'Noto Serif SC','Songti SC','SimSun',serif;--font-body:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;--header-height:60px;--grid-gap:28px;--content-padding:36px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px;-webkit-font-smoothing:antialiased}body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);line-height:1.6;overflow-x:hidden;min-height:100vh}body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}body::after{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 20%,rgba(196,168,130,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(106,155,204,.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(120,140,93,.04) 0%,transparent 60%),linear-gradient(135deg,#F5F5F7 0%,#EDEDF0 50%,#F0EFF3 100%)}::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bg-active);border-radius:3px}.app-header{position:fixed;top:0;left:0;right:0;height:var(--header-height);background:var(--mica-bg);backdrop-filter:var(--blur-heavy);-webkit-backdrop-filter:var(--blur-heavy);border-bottom:1px solid var(--mica-border);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 .5px 0 rgba(0,0,0,.04);display:flex;align-items:center;justify-content:space-between;padding:0 var(--content-padding);z-index:100}.header-left{display:flex;align-items:center;gap:14px}.header-brand{font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:2px}.header-right{display:flex;align-items:center;gap:6px}.header-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border:none;background:transparent;color:var(--text-secondary);font-family:var(--font-body);font-size:13px;font-weight:500;border-radius:var(--radius-sm);cursor:pointer;transition:all 300ms var(--ease-spring);white-space:nowrap;user-select:none;position:relative;overflow:hidden}.header-btn:hover{background:var(--bg-hover);color:var(--text-primary)}.header-btn:active{transform:scale(.93)}.header-btn.active{background:var(--text-primary);color:var(--text-inverse)}.header-btn svg{width:18px;height:18px;flex-shrink:0}.header-divider{width:1px;height:20px;background:var(--border);margin:0 4px}.app-main{padding-top:calc(var(--header-height) + 24px);padding-bottom:60px;min-height:100vh}.category-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:0 var(--content-padding);margin-bottom:24px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}.category-bar::-webkit-scrollbar{display:none}.category-tab{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 16px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-secondary);font-family:var(--font-body);font-size:13px;font-weight:500;border-radius:100px;cursor:pointer;transition:all 300ms var(--ease-spring);white-space:nowrap;flex-shrink:0}.category-tab:hover{border-color:var(--bg-active);color:var(--text-primary);transform:translateY(-1px)}.category-tab:active{transform:scale(.95)}.category-tab.active{background:var(--text-primary);color:var(--text-inverse);border-color:var(--text-primary);box-shadow:0 2px 8px rgba(0,0,0,.12)}.category-tab .count{font-size:11px;opacity:.7}.category-add-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px dashed var(--bg-active);background:transparent;color:var(--text-tertiary);border-radius:100px;cursor:pointer;transition:all 300ms var(--ease-spring);flex-shrink:0}.category-add-btn:hover{border-color:var(--text-secondary);color:var(--text-secondary);background:var(--bg-hover)}.category-add-btn svg{width:16px;height:16px}.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--grid-gap);padding:0 var(--content-padding)}.book-card{cursor:pointer;transition:transform 500ms var(--ease-out-expo),box-shadow 400ms var(--ease-smooth);position:relative;animation:cardEnter .6s var(--ease-out-expo) both;will-change:transform}@keyframes cardEnter{from{opacity:0;transform:translateY(30px) scale(.95);filter:blur(4px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}.book-card:hover{transform:translateY(-6px) scale(1.02)}.book-card.selected{transform:translateY(-2px)}.book-card.selected .book-cover{box-shadow:0 0 0 3px var(--accent),var(--shadow-lg)}.book-cover{position:relative;width:100%;aspect-ratio:3/4;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm),0 0 0 .5px rgba(0,0,0,.06);transition:box-shadow 500ms var(--ease-out-expo),transform 500ms var(--ease-out-expo)}.book-card:hover .book-cover{box-shadow:var(--shadow-lg),0 0 0 .5px rgba(0,0,0,.04),0 0 40px rgba(196,168,130,.12)}.book-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 600ms var(--ease-out-expo)}.book-card:hover .book-cover img{transform:scale(1.06)}.book-cover-overlay{position:absolute;bottom:0;left:0;right:0;padding:40px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.6));pointer-events:none}.book-cover-title{font-family:var(--font-body);font-size:12px;font-weight:500;color:rgba(255,255,255,.95);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.4;text-shadow:0 1px 4px rgba(0,0,0,.4)}.book-progress-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(0,0,0,.15)}.book-progress-fill{height:100%;background:rgba(255,255,255,.8);border-radius:0 2px 0 0;transition:width .3s ease}.book-info{padding:10px 2px 0}.book-title{font-size:13px;font-weight:500;color:var(--text-primary);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.4;min-height:2.8em}.book-meta{font-size:11px;color:var(--text-secondary);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.book-checkbox{position:absolute;top:8px;left:8px;width:22px;height:22px;border:2px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(0,0,0,.2);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:5;cursor:pointer;transition:var(--transition)}.edit-mode .book-checkbox{display:flex}.book-checkbox.checked{background:var(--accent);border-color:var(--accent)}.book-checkbox.checked::after{content:'';width:8px;height:8px;background:white;border-radius:50%}.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 40px;text-align:center}.empty-icon{width:80px;height:80px;margin-bottom:24px;opacity:.3}.empty-title{font-family:var(--font-display);font-size:18px;color:var(--text-secondary);margin-bottom:8px}.empty-desc{font-size:14px;color:var(--text-tertiary);margin-bottom:28px}.empty-btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 28px;background:var(--text-primary);color:var(--text-inverse);border:none;border-radius:100px;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;font-size:14px;font-weight:500;letter-spacing:.5px;line-height:1;cursor:pointer;transition:var(--transition);white-space:nowrap}.empty-btn:hover{transform:scale(1.02);box-shadow:var(--shadow-md)}.empty-btn svg{width:18px;height:18px}.search-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);backdrop-filter:blur(12px) saturate(120%);z-index:200;display:none;align-items:flex-start;justify-content:center;padding-top:120px;animation:overlayFadeIn .35s var(--ease-out-expo)}@keyframes overlayFadeIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(12px) saturate(120%)}}.search-overlay.show{display:flex}.search-box{width:90%;max-width:560px;background:var(--acrylic-bg);backdrop-filter:var(--blur-acrylic);border:1px solid var(--acrylic-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl),0 1px 0 rgba(255,255,255,.6) inset;overflow:hidden;animation:modalSlideIn .4s var(--ease-out-back)}@keyframes modalSlideIn{from{opacity:0;transform:translateY(-20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}.search-input-wrap{display:flex;align-items:center;padding:16px 20px;gap:12px;border-bottom:1px solid var(--border)}.search-input-wrap svg{width:20px;height:20px;color:var(--text-tertiary);flex-shrink:0}.search-input{flex:1;border:none;outline:none;font-family:var(--font-body);font-size:16px;color:var(--text-primary);background:transparent}.search-input::placeholder{color:var(--text-tertiary)}.search-results{max-height:400px;overflow-y:auto;padding:8px}.search-result-item{display:flex;align-items:center;gap:14px;padding:12px;border-radius:var(--radius-sm);cursor:pointer;transition:var(--transition)}.search-result-item:hover{background:var(--bg-hover)}.search-result-cover{flex-shrink:0}.search-result-info{flex:1;min-width:0}.search-result-title{font-size:14px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-result-meta{font-size:12px;color:var(--text-tertiary);margin-top:2px}.search-empty{padding:40px;text-align:center;font-size:14px;color:var(--text-tertiary)}.dropdown-panel{position:fixed;top:calc(var(--header-height) + 8px);background:var(--acrylic-bg);backdrop-filter:var(--blur-acrylic);border:1px solid var(--acrylic-border);border-radius:var(--radius-md);box-shadow:var(--shadow-lg),0 1px 0 rgba(255,255,255,.5) inset;z-index:150;min-width:180px;padding:6px;display:none;animation:dropdownIn .3s var(--ease-out-back)}@keyframes dropdownIn{from{opacity:0;transform:translateY(-8px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}.dropdown-panel.show{display:block}.dropdown-item{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;border:none;background:transparent;color:var(--text-primary);font-family:var(--font-body);font-size:14px;border-radius:var(--radius-sm);cursor:pointer;transition:all 200ms var(--ease-spring);text-align:left}.dropdown-item:hover{background:var(--bg-hover);transform:translateX(2px)}.dropdown-item:active{transform:scale(.97)}.dropdown-item.active{color:var(--accent-dark);font-weight:600}.dropdown-item svg{width:16px;height:16px;color:var(--text-tertiary)}.dropdown-item.active svg{color:var(--accent-dark)}.edit-toolbar{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;padding:10px 16px;background:var(--acrylic-bg);backdrop-filter:var(--blur-acrylic);border:1px solid var(--acrylic-border);border-radius:100px;box-shadow:var(--shadow-xl),0 1px 0 rgba(255,255,255,.4) inset;z-index:150;animation:toolbarSlideUp .5s var(--ease-out-back)}@keyframes toolbarSlideUp{from{opacity:0;transform:translateX(-50%) translateY(30px) scale(.9)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}.edit-toolbar.show{display:flex}.edit-toolbar-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px;border:none;background:transparent;color:var(--text-primary);font-family:var(--font-body);font-size:13px;font-weight:500;border-radius:100px;cursor:pointer;transition:all 250ms var(--ease-spring);white-space:nowrap}.edit-toolbar-btn:hover{background:rgba(0,0,0,.06)}.edit-toolbar-btn:active{transform:scale(.92)}.edit-toolbar-btn.danger:hover{background:rgba(255,59,48,.1)}.edit-toolbar-btn svg{width:16px;height:16px}.edit-toolbar-divider{width:1px;height:20px;background:rgba(0,0,0,.08)}.reader{position:fixed;inset:0;background:var(--bg-primary);z-index:300;display:none;flex-direction:column}.reader.show{display:flex}.reader-header{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:var(--mica-bg);backdrop-filter:var(--blur-heavy);border-bottom:1px solid var(--mica-border);box-shadow:0 1px 0 rgba(255,255,255,.5) inset;flex-shrink:0;transition:opacity .4s var(--ease-out-expo),transform .4s var(--ease-out-expo)}.reader-header.hidden{opacity:0;pointer-events:none}.reader-title{font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:center;padding:0 16px}.reader-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:none;background:transparent;color:var(--text-secondary);border-radius:var(--radius-sm);cursor:pointer;transition:all 250ms var(--ease-spring);flex-shrink:0}.reader-btn:hover{background:var(--bg-hover);color:var(--text-primary)}.reader-btn:active{transform:scale(.88)}.reader-btn svg{width:20px;height:20px}.reader-content{flex:1;overflow-y:auto;scroll-behavior:smooth}.reader-body{max-width:720px;margin:0 auto;padding:32px 24px;transition:line-height .3s ease,font-family .2s ease;will-change:font-size;contain:layout style}.reader-body p{text-indent:2em;margin-bottom:.6em;line-height:1.8}.reader-footer{height:52px;display:flex;align-items:center;justify-content:center;gap:20px;background:var(--mica-bg);backdrop-filter:var(--blur-heavy);border-top:1px solid var(--mica-border);box-shadow:-1px 0 0 rgba(255,255,255,.5) inset;flex-shrink:0;transition:opacity .4s var(--ease-out-expo),transform .4s var(--ease-out-expo)}.reader-footer.hidden{opacity:0;pointer-events:none}.reader-progress{font-size:12px;color:var(--text-tertiary)}.reader-nav-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 18px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-secondary);font-family:var(--font-body);font-size:13px;border-radius:100px;cursor:pointer;transition:all 300ms var(--ease-spring)}.reader-nav-btn:hover{background:var(--bg-hover);color:var(--text-primary);transform:scale(1.04)}.reader-nav-btn:active{transform:scale(.96)}.reader-nav-btn svg{width:16px;height:16px}.reader-settings{position:fixed;bottom:0;left:0;right:0;background:var(--acrylic-bg);backdrop-filter:var(--blur-heavy);border:1px solid var(--acrylic-border);border-bottom:none;border-radius:var(--radius-xl) var(--radius-xl) 0 0;box-shadow:0 -4px 40px rgba(0,0,0,.08),0 1px 0 rgba(255,255,255,.5) inset;padding:24px;z-index:310;display:none;animation:sheetSlideUp .45s var(--ease-out-expo)}@keyframes sheetSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}.reader-settings.show{display:block}.settings-handle{width:36px;height:4px;background:var(--bg-active);border-radius:2px;margin:0 auto 20px}.settings-section{margin-bottom:24px}.settings-section:last-child{margin-bottom:0}.settings-label{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}.settings-row{display:flex;align-items:center;gap:12px}.settings-option{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 16px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-secondary);font-family:var(--font-body);font-size:14px;border-radius:var(--radius-sm);cursor:pointer;transition:all 250ms var(--ease-spring)}.settings-option:hover{border-color:var(--bg-active);transform:translateY(-1px)}.settings-option:active{transform:scale(.94)}.settings-option.active{background:var(--text-primary);color:var(--text-inverse);border-color:var(--text-primary)}.settings-slider-wrap{display:flex;align-items:center;gap:14px;flex:1}.settings-slider{flex:1;-webkit-appearance:none;appearance:none;height:4px;background:var(--bg-tertiary);border-radius:2px;outline:none}.settings-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--text-primary);border-radius:50%;cursor:pointer;box-shadow:var(--shadow-sm)}.settings-slider-value{font-size:13px;color:var(--text-secondary);min-width:36px;text-align:center}.settings-bg-options{display:flex;gap:12px}.settings-bg{width:44px;height:44px;border-radius:var(--radius-sm);border:2px solid transparent;cursor:pointer;transition:all 300ms var(--ease-spring)}.settings-bg:hover{transform:scale(1.08)}.settings-bg:active{transform:scale(.92)}.settings-bg.active{border-color:var(--accent);box-shadow:0 0 0 3px rgba(196,168,130,.3)}.settings-bg-light{background:#FFF}.settings-bg-warm{background:#F5E6D3}.settings-bg-green{background:#E8F0E4}.settings-bg-dark{background:#1A1A1A}.settings-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:305;display:none}.settings-overlay.show{display:block}.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);backdrop-filter:blur(8px);z-index:250;display:none;align-items:center;justify-content:center;padding:20px;animation:overlayFadeIn .3s var(--ease-out-expo)}.modal-overlay.show{display:flex}.modal{width:100%;max-width:400px;background:var(--acrylic-bg);backdrop-filter:var(--blur-acrylic);border:1px solid var(--acrylic-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl),0 1px 0 rgba(255,255,255,.6) inset,0 0 80px rgba(196,168,130,.06);padding:28px;animation:modalSlideIn .45s var(--ease-out-back)}.modal-title{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:20px}.modal-input{width:100%;height:44px;padding:0 16px;border:1px solid var(--border);background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-body);font-size:15px;border-radius:var(--radius-sm);outline:none;transition:var(--transition);margin-bottom:16px}.modal-input:focus{border-color:var(--accent)}.modal-select{width:100%;height:44px;padding:0 16px;border:1px solid var(--border);background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-body);font-size:15px;border-radius:var(--radius-sm);outline:none;margin-bottom:16px;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236E6E73' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}.modal-actions{display:flex;gap:10px;justify-content:flex-end}.modal-btn{height:40px;padding:0 22px;border:none;font-family:var(--font-body);font-size:14px;font-weight:500;border-radius:var(--radius-sm);cursor:pointer;transition:all 250ms var(--ease-spring)}.modal-btn:active{transform:scale(.94)}.modal-btn-cancel{background:var(--bg-hover);color:var(--text-secondary)}.modal-btn-confirm{background:var(--text-primary);color:var(--text-inverse)}.modal-btn-danger{background:#FF3B30;color:white}.toast-container{position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:500;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}.toast{padding:10px 20px;background:var(--text-primary);color:var(--text-inverse);font-size:14px;border-radius:100px;box-shadow:var(--shadow-lg),0 0 0 .5px rgba(255,255,255,.1);animation:toastIn .4s var(--ease-out-back),toastOut .35s var(--ease-in-out-quart) 2.2s forwards;pointer-events:auto}@keyframes toastIn{from{opacity:0;transform:translateY(-16px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes toastOut{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-12px) scale(.9)}}.layout-grid .book-progress-inline{display:none}.layout-list .book-grid{grid-template-columns:1fr;gap:0}.layout-list .book-card{display:flex;align-items:center;gap:16px;padding:14px var(--content-padding);border-bottom:1px solid var(--border);border-radius:0;transition:background var(--transition)}.layout-list .book-card:hover{transform:none;background:var(--bg-hover)}.layout-list .book-card.selected{transform:none;background:var(--accent-light)}.layout-list .book-card.selected .book-cover{box-shadow:0 0 0 2px var(--accent)}.layout-list .book-cover{width:68px;aspect-ratio:3/4;flex-shrink:0;border-radius:var(--radius-sm)}.layout-list .book-cover-overlay{display:none}.layout-list .book-info{padding:0;flex:1;min-width:0}.layout-list .book-title{font-size:15px;font-weight:600;min-height:auto;-webkit-line-clamp:1}.layout-list .book-meta{font-size:12px;margin-top:4px;color:var(--text-secondary)}.layout-list .book-checkbox{top:50%;left:8px;transform:translateY(-50%)}.layout-list .book-progress-inline{display:flex;align-items:center;gap:8px;margin-top:6px}.layout-list .book-progress-bar-inline{flex:1;height:4px;background:var(--bg-tertiary);border-radius:2px;overflow:hidden;max-width:120px}.layout-list .book-progress-fill-inline{height:100%;background:var(--accent);border-radius:2px;transition:width .3s ease}.layout-list .book-progress-text{font-size:11px;color:var(--text-tertiary)}.category-context-menu{position:fixed;background:var(--bg-secondary);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);border:1px solid var(--border);z-index:200;min-width:140px;padding:6px;display:none;animation:dropdownIn .15s ease}.category-context-menu.show{display:block}.category-context-item{display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;border:none;background:transparent;color:var(--text-primary);font-family:var(--font-body);font-size:13px;border-radius:var(--radius-sm);cursor:pointer;transition:var(--transition);text-align:left}.category-context-item:hover{background:var(--bg-hover)}.category-context-item.danger{color:#FF3B30}.category-context-item.danger:hover{background:rgba(255,59,48,.08)}.category-context-item svg{width:14px;height:14px;flex-shrink:0}.reader.theme-dark{background:#1A1A1A;color:#D1D1D6}.reader.theme-dark .reader-header,.reader.theme-dark .reader-footer{background:rgba(26,26,26,.9);border-color:rgba(255,255,255,.08)}.reader.theme-dark .reader-btn{color:#98989D}.reader.theme-dark .reader-btn:hover{color:#D1D1D6;background:rgba(255,255,255,.08)}.reader.theme-dark .reader-progress{color:#636366}.reader.theme-dark .reader-nav-btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#98989D}.reader.theme-dark .reader-nav-btn:hover{background:rgba(255,255,255,.1);color:#D1D1D6}.reader.theme-warm{background:#F5E6D3;color:#5B4636}.reader.theme-warm .reader-header,.reader.theme-warm .reader-footer{background:rgba(245,230,211,.9);border-color:rgba(91,70,54,.1)}.reader.theme-green{background:#E8F0E4;color:#2D3B2A}.reader.theme-green .reader-header,.reader.theme-green .reader-footer{background:rgba(232,240,228,.9);border-color:rgba(45,59,42,.1)}#fileInput{display:none}.reader-toc-panel{position:fixed;bottom:0;left:0;right:0;max-height:60vh;background:var(--acrylic-bg);backdrop-filter:var(--blur-heavy);border:1px solid var(--acrylic-border);border-bottom:none;border-radius:var(--radius-xl) var(--radius-xl) 0 0;box-shadow:0 -4px 40px rgba(0,0,0,.08),0 1px 0 rgba(255,255,255,.5) inset;z-index:310;display:none;flex-direction:column;animation:sheetSlideUp .45s var(--ease-out-expo)}.reader-toc-panel.show{display:flex}.reader-toc-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;flex-shrink:0}.reader-toc-title{font-size:15px;font-weight:600}.reader-toc-close{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;background:var(--bg-hover);color:var(--text-secondary);border-radius:50%;cursor:pointer;transition:all 250ms var(--ease-spring)}.reader-toc-close:hover{background:var(--bg-active);color:var(--text-primary)}.reader-toc-close:active{transform:scale(.9)}.reader-toc-close svg{width:14px;height:14px}.reader-toc-search{margin:0 20px 12px;height:38px;padding:0 14px;border:1px solid var(--border);background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-body);font-size:14px;border-radius:100px;outline:none;transition:border-color var(--transition);flex-shrink:0}.reader-toc-search:focus{border-color:var(--accent)}.reader-toc-list{overflow-y:auto;padding:0 12px 20px;flex:1}.reader-toc-item{display:block;width:100%;padding:10px 14px;border:none;background:transparent;color:var(--text-primary);font-family:var(--font-body);font-size:14px;border-radius:var(--radius-sm);cursor:pointer;transition:all 200ms var(--ease-spring);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.reader-toc-item:hover{background:var(--bg-hover);transform:translateX(2px)}.reader-toc-item:active{transform:scale(.98)}.reader-toc-item.current{background:var(--accent-light);color:var(--accent-dark);font-weight:600}.reader-toc-empty{padding:40px 20px;text-align:center;font-size:14px;color:var(--text-tertiary)}@media(max-width:768px){:root{--content-padding:20px;--grid-gap:16px}.book-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}.header-btn span{display:none}.header-divider{display:none}}@media(max-width:480px){.book-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+/* ============================================
+   DESIGN TOKENS & CSS VARIABLES
+   ============================================ */
+:root {
+  --bg-primary: #F5F5F7;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #EEEEF0;
+  --bg-hover: #E8E8ED;
+  --bg-active: #D2D2D7;
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --text-tertiary: #A1A1A6;
+  --text-inverse: #FFFFFF;
+  --accent: #C4A882;
+  --accent-light: #E8DCC8;
+  --accent-dark: #8B7355;
+  --border: rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Non-linear easing curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 250ms var(--ease-smooth);
+  --transition-slow: 500ms var(--ease-out-expo);
+  --transition-bounce: 400ms var(--ease-spring);
+  --transition-elastic: 600ms var(--ease-elastic);
+
+  /* Mica / Acrylic material */
+  --mica-bg: rgba(245, 245, 247, 0.72);
+  --mica-border: rgba(255, 255, 255, 0.18);
+  --acrylic-bg: rgba(255, 255, 255, 0.65);
+  --acrylic-border: rgba(255, 255, 255, 0.25);
+  --blur-medium: blur(20px) saturate(180%);
+  --blur-heavy: blur(40px) saturate(200%);
+  --blur-acrylic: blur(30px) saturate(150%) brightness(1.05);
+
+  --font-display: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-body: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --header-height: 60px;
+  --grid-gap: 28px;
+  --content-padding: 36px;
+}
+
+/* ============================================
+   NOISE TEXTURE (Mica Material)
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Mica background layer */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(196, 168, 130, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(106, 155, 204, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(120, 140, 93, 0.04) 0%, transparent 60%),
+    linear-gradient(135deg, #F5F5F7 0%, #EDEDF0 50%, #F0EFF3 100%);
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-active); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.app-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: var(--mica-bg);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  border-bottom: 1px solid var(--mica-border);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.5) inset,
+    0 0.5px 0 rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--content-padding);
+  z-index: 100;
+  transition: var(--transition);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-brand {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 300ms var(--ease-spring);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(0,0,0,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.header-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.header-btn:hover::after { opacity: 1; }
+
+.header-btn:active {
+  transform: scale(0.93);
+}
+
+.header-btn.active {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+}
+
+.header-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.header-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.app-main {
+  padding-top: calc(var(--header-height) + 24px);
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+/* ============================================
+   CATEGORY TABS
+   ============================================ */
+.category-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 var(--content-padding);
+  margin-bottom: 24px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.category-bar::-webkit-scrollbar { display: none; }
+
+.category-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 300ms var(--ease-spring);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.category-tab:hover {
+  border-color: var(--bg-active);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.category-tab:active {
+  transform: scale(0.95);
+}
+
+.category-tab.active {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.category-tab .count {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.category-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px dashed var(--bg-active);
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.category-add-btn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+}
+
+.category-add-btn svg { width: 16px; height: 16px; }
+
+/* Category context menu */
+.category-context-menu {
+  position: fixed;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  z-index: 200;
+  min-width: 140px;
+  padding: 6px;
+  display: none;
+  animation: slideDown 0.15s ease;
+}
+
+.category-context-menu.show { display: block; }
+
+.category-context-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.category-context-item:hover { background: var(--bg-hover); }
+.category-context-item.danger { color: #FF3B30; }
+.category-context-item.danger:hover { background: rgba(255,59,48,0.08); }
+.category-context-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Category manage modal list */
+.category-manage-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.category-manage-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.category-manage-item:last-child { border-bottom: none; }
+
+.category-manage-name {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.category-manage-count {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-right: 12px;
+}
+
+.category-manage-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.category-manage-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-manage-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.category-manage-btn.danger:hover { color: #FF3B30; }
+.category-manage-btn svg { width: 14px; height: 14px; }
+
+/* ============================================
+   BOOK GRID
+   ============================================ */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--grid-gap);
+  padding: 0 var(--content-padding);
+}
+
+.book-card {
+  cursor: pointer;
+  transition:
+    transform 500ms var(--ease-out-expo),
+    box-shadow 400ms var(--ease-smooth);
+  position: relative;
+  animation: cardEnter 0.6s var(--ease-out-expo) both;
+  will-change: transform;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.book-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.book-card.selected {
+  transform: translateY(-2px);
+}
+
+.book-card.selected .book-cover {
+  box-shadow: 0 0 0 3px var(--accent), var(--shadow-lg);
+  border-radius: var(--radius-md);
+}
+
+.book-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm), 0 0 0 0.5px rgba(0,0,0,0.06);
+  transition:
+    box-shadow 500ms var(--ease-out-expo),
+    transform 500ms var(--ease-out-expo);
+}
+
+.book-card:hover .book-cover {
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 0.5px rgba(0,0,0,0.04),
+    0 0 40px rgba(196, 168, 130, 0.12);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms var(--ease-out-expo);
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.06);
+}
+
+.book-cover-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40px 12px 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  pointer-events: none;
+}
+
+.book-cover-title {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.95);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.book-progress-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(0,0,0,0.15);
+}
+
+.book-progress-fill {
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  border-radius: 0 2px 0 0;
+  transition: width 0.3s ease;
+}
+
+.book-info {
+  padding: 10px 2px 0;
+}
+
+.book-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+
+.book-meta {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Edit mode checkbox */
+.book-checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 50%;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.edit-mode .book-checkbox { display: flex; }
+
+.book-checkbox.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.book-checkbox.checked::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 40px;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+  opacity: 0.3;
+}
+
+.empty-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.empty-desc {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  margin-bottom: 28px;
+}
+
+.empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 28px;
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 100px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.empty-btn:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+.empty-btn svg { width: 18px; height: 18px; }
+
+/* ============================================
+   SEARCH OVERLAY
+   ============================================ */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  z-index: 200;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 120px;
+  animation: overlayFadeIn 0.35s var(--ease-out-expo);
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; backdrop-filter: blur(0); }
+  to { opacity: 1; backdrop-filter: blur(12px) saturate(120%); }
+}
+
+.search-overlay.show { display: flex; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.search-box {
+  width: 90%;
+  max-width: 560px;
+  background: var(--acrylic-bg);
+  backdrop-filter: var(--blur-acrylic);
+  -webkit-backdrop-filter: var(--blur-acrylic);
+  border: 1px solid var(--acrylic-border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-xl),
+    0 1px 0 rgba(255,255,255,0.6) inset;
+  overflow: hidden;
+  animation: modalSlideIn 0.4s var(--ease-out-back);
+}
+
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: translateY(-20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-input-wrap svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.search-input::placeholder { color: var(--text-tertiary); }
+
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.search-result-item:hover { background: var(--bg-hover); }
+
+.search-result-cover {
+  width: 40px;
+  height: 54px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+}
+
+.search-result-info { flex: 1; min-width: 0; }
+
+.search-result-title {
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-result-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.search-empty {
+  padding: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   SORT PANEL
+   ============================================ */
+.dropdown-panel {
+  position: fixed;
+  top: calc(var(--header-height) + 8px);
+  background: var(--acrylic-bg);
+  backdrop-filter: var(--blur-acrylic);
+  -webkit-backdrop-filter: var(--blur-acrylic);
+  border: 1px solid var(--acrylic-border);
+  border-radius: var(--radius-md);
+  box-shadow:
+    var(--shadow-lg),
+    0 1px 0 rgba(255,255,255,0.5) inset;
+  z-index: 150;
+  min-width: 180px;
+  padding: 6px;
+  display: none;
+  animation: dropdownIn 0.3s var(--ease-out-back);
+}
+
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dropdown-panel.show { display: block; }
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 200ms var(--ease-spring);
+  text-align: left;
+}
+
+.dropdown-item:hover { background: var(--bg-hover); transform: translateX(2px); }
+.dropdown-item:active { transform: scale(0.97); }
+.dropdown-item.active { color: var(--accent-dark); font-weight: 600; }
+
+.dropdown-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
+}
+
+.dropdown-item.active svg { color: var(--accent-dark); }
+
+/* ============================================
+   EDIT TOOLBAR
+   ============================================ */
+.edit-toolbar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--acrylic-bg);
+  backdrop-filter: var(--blur-acrylic);
+  -webkit-backdrop-filter: var(--blur-acrylic);
+  border: 1px solid var(--acrylic-border);
+  border-radius: 100px;
+  box-shadow:
+    var(--shadow-xl),
+    0 1px 0 rgba(255,255,255,0.4) inset;
+  z-index: 150;
+  animation: toolbarSlideUp 0.5s var(--ease-out-back);
+}
+
+@keyframes toolbarSlideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.edit-toolbar.show { display: flex; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.edit-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 250ms var(--ease-spring);
+  white-space: nowrap;
+}
+
+.edit-toolbar-btn:hover { background: rgba(0,0,0,0.06); }
+.edit-toolbar-btn:active { transform: scale(0.92); }
+.edit-toolbar-btn.danger:hover { background: rgba(255,59,48,0.1); }
+
+.edit-toolbar-btn svg { width: 16px; height: 16px; }
+
+.edit-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ============================================
+   READER
+   ============================================ */
+.reader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 300;
+  display: none;
+  flex-direction: column;
+}
+
+.reader.show { display: flex; }
+
+.reader-header {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: var(--mica-bg);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  border-bottom: 1px solid var(--mica-border);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
+  flex-shrink: 0;
+  transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+}
+
+.reader-header.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reader-title {
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.reader-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 250ms var(--ease-spring);
+  flex-shrink: 0;
+}
+
+.reader-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.reader-btn:active { transform: scale(0.88); }
+.reader-btn svg { width: 20px; height: 20px; }
+
+.reader-content {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.reader-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  transition: line-height 0.3s ease, font-family 0.2s ease;
+  will-change: font-size;
+  contain: layout style;
+}
+
+.reader-body p {
+  text-indent: 2em;
+  margin-bottom: 0.6em;
+  line-height: 1.8;
+}
+
+.reader-footer {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--mica-bg);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  border-top: 1px solid var(--mica-border);
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.5) inset;
+  flex-shrink: 0;
+  transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+}
+
+.reader-footer.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reader-progress {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* Reader TOC Panel */
+.reader-toc-panel {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  max-height: 60vh;
+  background: var(--acrylic-bg);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  border: 1px solid var(--acrylic-border);
+  border-bottom: none;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow:
+    0 -4px 40px rgba(0,0,0,0.08),
+    0 1px 0 rgba(255,255,255,0.5) inset;
+  z-index: 310;
+  display: none;
+  flex-direction: column;
+  animation: sheetSlideUp 0.45s var(--ease-out-expo);
+}
+
+.reader-toc-panel.show { display: flex; }
+
+.reader-toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  flex-shrink: 0;
+}
+
+.reader-toc-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.reader-toc-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 250ms var(--ease-spring);
+}
+
+.reader-toc-close:hover { background: var(--bg-active); color: var(--text-primary); }
+.reader-toc-close:active { transform: scale(0.9); }
+.reader-toc-close svg { width: 14px; height: 14px; }
+
+.reader-toc-search {
+  margin: 0 20px 12px;
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-radius: 100px;
+  outline: none;
+  transition: border-color var(--transition);
+  flex-shrink: 0;
+}
+
+.reader-toc-search:focus { border-color: var(--accent); }
+
+.reader-toc-list {
+  overflow-y: auto;
+  padding: 0 12px 20px;
+  flex: 1;
+}
+
+.reader-toc-item {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 200ms var(--ease-spring);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reader-toc-item:hover { background: var(--bg-hover); transform: translateX(2px); }
+.reader-toc-item:active { transform: scale(0.98); }
+.reader-toc-item.current { background: var(--accent-light); color: var(--accent-dark); font-weight: 600; }
+
+.reader-toc-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+.reader-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 300ms var(--ease-spring);
+}
+
+.reader-nav-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  transform: scale(1.04);
+}
+
+.reader-nav-btn:active {
+  transform: scale(0.96);
+}
+
+.reader-nav-btn svg { width: 16px; height: 16px; }
+
+/* Reader Settings Panel */
+.reader-settings {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--acrylic-bg);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  border: 1px solid var(--acrylic-border);
+  border-bottom: none;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow:
+    0 -4px 40px rgba(0,0,0,0.08),
+    0 1px 0 rgba(255,255,255,0.5) inset;
+  padding: 24px;
+  z-index: 310;
+  display: none;
+  animation: sheetSlideUp 0.45s var(--ease-out-expo);
+}
+
+@keyframes sheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.reader-settings.show { display: block; }
+
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.settings-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--bg-active);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.settings-section {
+  margin-bottom: 24px;
+}
+
+.settings-section:last-child { margin-bottom: 0; }
+
+.settings-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 250ms var(--ease-spring);
+}
+
+.settings-option:hover { border-color: var(--bg-active); transform: translateY(-1px); }
+.settings-option:active { transform: scale(0.94); }
+
+.settings-option.active {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-color: var(--text-primary);
+}
+
+.settings-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.settings-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  outline: none;
+}
+
+.settings-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-slider-value {
+  font-size: 13px;
+  color: var(--text-secondary);
+  min-width: 36px;
+  text-align: center;
+}
+
+.settings-bg-options {
+  display: flex;
+  gap: 12px;
+}
+
+.settings-bg {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 300ms var(--ease-spring);
+}
+
+.settings-bg:hover { transform: scale(1.08); }
+.settings-bg:active { transform: scale(0.92); }
+.settings-bg.active { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(196, 168, 130, 0.3); }
+
+.settings-bg-light { background: #FFFFFF; }
+.settings-bg-warm { background: #F5E6D3; }
+.settings-bg-green { background: #E8F0E4; }
+.settings-bg-dark { background: #1A1A1A; }
+
+/* Settings overlay */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 305;
+  display: none;
+}
+
+.settings-overlay.show { display: block; }
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(8px) saturate(100%);
+  -webkit-backdrop-filter: blur(8px) saturate(100%);
+  z-index: 250;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: overlayFadeIn 0.3s var(--ease-out-expo);
+}
+
+.modal-overlay.show { display: flex; }
+
+.modal {
+  width: 100%;
+  max-width: 400px;
+  background: var(--acrylic-bg);
+  backdrop-filter: var(--blur-acrylic);
+  -webkit-backdrop-filter: var(--blur-acrylic);
+  border: 1px solid var(--acrylic-border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-xl),
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 0 80px rgba(196, 168, 130, 0.06);
+  padding: 28px;
+  animation: modalSlideIn 0.45s var(--ease-out-back);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.modal-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+
+.modal-input:focus { border-color: var(--accent); }
+
+.modal-select {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition);
+  margin-bottom: 16px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236E6E73' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  height: 40px;
+  padding: 0 22px;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 250ms var(--ease-spring);
+}
+
+.modal-btn:active {
+  transform: scale(0.94);
+}
+
+.modal-btn-cancel {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.modal-btn-cancel:hover { background: var(--bg-active); }
+
+.modal-btn-confirm {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+}
+
+.modal-btn-confirm:hover { opacity: 0.85; }
+
+.modal-btn-danger {
+  background: #FF3B30;
+  color: white;
+}
+
+.modal-btn-danger:hover { opacity: 0.85; }
+
+/* ============================================
+   TOAST
+   ============================================ */
+.toast-container {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  padding: 10px 20px;
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  font-size: 14px;
+  border-radius: 100px;
+  box-shadow: var(--shadow-lg), 0 0 0 0.5px rgba(255,255,255,0.1);
+  animation: toastIn 0.4s var(--ease-out-back), toastOut 0.35s var(--ease-in-out-quart) 2.2s forwards;
+  pointer-events: auto;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-16px) scale(0.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-12px) scale(0.9); }
+}
+
+/* ============================================
+   LAYOUT VARIANTS
+   ============================================ */
+.layout-grid .book-grid {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.layout-list .book-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.layout-list .book-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px var(--content-padding);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  transition: background var(--transition);
+}
+
+.layout-list .book-card:hover {
+  transform: none;
+  background: var(--bg-hover);
+}
+
+.layout-list .book-card.selected {
+  transform: none;
+  background: var(--accent-light);
+}
+
+.layout-list .book-card.selected .book-cover {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.layout-list .book-cover {
+  width: 68px;
+  aspect-ratio: 3/4;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+.layout-list .book-cover-overlay { display: none; }
+.layout-list .book-info { padding: 0; flex: 1; min-width: 0; }
+.layout-list .book-title { font-size: 15px; font-weight: 600; min-height: auto; -webkit-line-clamp: 1; }
+.layout-list .book-meta { font-size: 12px; margin-top: 4px; color: var(--text-secondary); }
+.layout-list .book-checkbox { top: 50%; left: 8px; transform: translateY(-50%); }
+
+/* List view progress indicator - hidden in grid view */
+.layout-grid .book-progress-inline { display: none; }
+
+.layout-list .book-progress-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.layout-list .book-progress-bar-inline {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+  max-width: 120px;
+}
+
+.layout-list .book-progress-fill-inline {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.layout-list .book-progress-text {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --content-padding: 20px;
+    --grid-gap: 16px;
+  }
+  .book-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .header-btn span { display: none; }
+  .header-divider { display: none; }
+}
+
+@media (max-width: 480px) {
+  .book-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+/* ============================================
+   THEME: Dark Reader
+   ============================================ */
+.reader.theme-dark {
+  background: #1A1A1A;
+  color: #D1D1D6;
+}
+
+.reader.theme-dark .reader-header,
+.reader.theme-dark .reader-footer {
+  background: rgba(26,26,26,0.9);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.reader.theme-dark .reader-btn { color: #98989D; }
+.reader.theme-dark .reader-btn:hover { color: #D1D1D6; background: rgba(255,255,255,0.08); }
+.reader.theme-dark .reader-progress { color: #636366; }
+.reader.theme-dark .reader-nav-btn { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); color: #98989D; }
+.reader.theme-dark .reader-nav-btn:hover { background: rgba(255,255,255,0.1); color: #D1D1D6; }
+
+.reader.theme-warm { background: #F5E6D3; color: #5B4636; }
+.reader.theme-warm .reader-header,
+.reader.theme-warm .reader-footer {
+  background: rgba(245,230,211,0.9);
+  border-color: rgba(91,70,54,0.1);
+}
+
+.reader.theme-green { background: #E8F0E4; color: #2D3B2A; }
+.reader.theme-green .reader-header,
+.reader.theme-green .reader-footer {
+  background: rgba(232,240,228,0.9);
+  border-color: rgba(45,59,42,0.1);
+}
+
+/* ============================================
+   HIDDEN FILE INPUT
+   ============================================ */
+#fileInput { display: none; }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Full application with all features - see complete source in local bookshelf.html -->
+
+<!-- ============================================
+     HEADER
+     ============================================ -->
+<header class="app-header">
+  <div class="header-left">
+    <span class="header-brand">书库</span>
+  </div>
+  <div class="header-right">
+    <button class="header-btn" id="btnSearch" title="搜索">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="header-btn" id="btnImport" title="导入">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <div class="header-divider"></div>
+    <button class="header-btn" id="btnSort" title="排序">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="16" y2="12"/><line x1="4" y1="18" x2="12" y2="18"/></svg>
+      <span>排序</span>
+    </button>
+    <button class="header-btn" id="btnEdit" title="编辑">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span>编辑</span>
+    </button>
+    <button class="header-btn" id="btnLayout" title="排版">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>排版</span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================
+     MAIN CONTENT
+     ============================================ -->
+<main class="app-main layout-grid" id="appMain">
+  <!-- Category Bar -->
+  <div class="category-bar" id="categoryBar"></div>
+  <!-- Book Grid -->
+  <div class="book-grid" id="bookGrid"></div>
+</main>
+
+<!-- ============================================
+     SEARCH OVERLAY
+     ============================================ -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="搜索书名..." autocomplete="off">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ============================================
+     SORT PANEL
+     ============================================ -->
+<div class="dropdown-panel" id="sortPanel">
+  <button class="dropdown-item active" data-sort="recent">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    最近添加
+  </button>
+  <button class="dropdown-item" data-sort="name">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg>
+    按书名
+  </button>
+  <button class="dropdown-item" data-sort="progress">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    按进度
+  </button>
+  <button class="dropdown-item" data-sort="size">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    按大小
+  </button>
+</div>
+
+<!-- ============================================
+     LAYOUT PANEL
+     ============================================ -->
+<div class="dropdown-panel" id="layoutPanel" style="right: 36px;">
+  <button class="dropdown-item active" data-layout="grid">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    网格视图
+  </button>
+  <button class="dropdown-item" data-layout="list">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    列表视图
+  </button>
+</div>
+
+<!-- ============================================
+     EDIT TOOLBAR
+     ============================================ -->
+<div class="edit-toolbar" id="editToolbar">
+  <button class="edit-toolbar-btn" id="editSelectAll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    全选
+  </button>
+  <div class="edit-toolbar-divider"></div>
+  <button class="edit-toolbar-btn" id="editRename">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    重命名
+  </button>
+  <button class="edit-toolbar-btn" id="editMove">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+    移动分类
+  </button>
+  <div class="edit-toolbar-divider"></div>
+  <button class="edit-toolbar-btn danger" id="editDelete">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+    删除
+  </button>
+</div>
+
+<!-- ============================================
+     READER
+     ============================================ -->
+<div class="reader" id="reader">
+  <header class="reader-header" id="readerHeader">
+    <button class="reader-btn" id="readerBack">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="reader-title" id="readerTitle">书名</div>
+    <button class="reader-btn" id="readerSettingsBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+  </header>
+
+  <div class="reader-content" id="readerContent">
+    <div class="reader-body" id="readerBody"></div>
+  </div>
+
+  <footer class="reader-footer" id="readerFooter">
+    <button class="reader-nav-btn" id="readerPrev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      上一章
+    </button>
+    <span class="reader-progress" id="readerProgress">0%</span>
+    <button class="reader-nav-btn" id="readerTocBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      目录
+    </button>
+    <button class="reader-nav-btn" id="readerNext">
+      下一章
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </footer>
+</div>
+
+<!-- Reader Settings -->
+<div class="settings-overlay" id="settingsOverlay"></div>
+<div class="reader-settings" id="readerSettings">
+
+<!-- Reader TOC Panel -->
+<div class="reader-toc-panel" id="readerTocPanel">
+  <div class="reader-toc-header">
+    <div class="reader-toc-title">目录</div>
+    <button class="reader-toc-close" id="tocCloseBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <input class="reader-toc-search" id="tocSearch" type="text" placeholder="搜索章节..." autocomplete="off">
+  <div class="reader-toc-list" id="tocList"></div>
+</div>
+  <div class="settings-handle"></div>
+  <div class="settings-section">
+    <div class="settings-label">字体大小</div>
+    <div class="settings-slider-wrap">
+      <span style="font-size:12px;color:var(--text-tertiary)">A</span>
+      <input type="range" class="settings-slider" id="settingFontSize" min="14" max="28" value="18">
+      <span style="font-size:20px;color:var(--text-tertiary)">A</span>
+      <span class="settings-slider-value" id="fontSizeValue">18px</span>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">行距</div>
+    <div class="settings-row">
+      <button class="settings-option" data-line-height="1.5">紧凑</button>
+      <button class="settings-option active" data-line-height="1.8">适中</button>
+      <button class="settings-option" data-line-height="2.2">宽松</button>
+      <button class="settings-option" data-line-height="2.6">超宽</button>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">字体</div>
+    <div class="settings-row">
+      <button class="settings-option active" data-font="sans">默认</button>
+      <button class="settings-option" data-font="serif">宋体</button>
+      <button class="settings-option" data-font="kai">楷体</button>
+      <button class="settings-option" data-font="hei">黑体</button>
+      <button class="settings-option" data-font="fang">仿宋</button>
+      <button class="settings-option" data-font="round">圆体</button>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">背景</div>
+    <div class="settings-bg-options">
+      <div class="settings-bg settings-bg-light active" data-theme=""></div>
+      <div class="settings-bg settings-bg-warm" data-theme="theme-warm"></div>
+      <div class="settings-bg settings-bg-green" data-theme="theme-green"></div>
+      <div class="settings-bg settings-bg-dark" data-theme="theme-dark"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     MODALS
+     ============================================ -->
+<!-- Add Category Modal -->
+<div class="modal-overlay" id="addCategoryModal">
+  <div class="modal">
+    <div class="modal-title">新建分类</div>
+    <input class="modal-input" id="newCategoryInput" type="text" placeholder="输入分类名称..." maxlength="20">
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('addCategoryModal')">取消</button>
+      <button class="modal-btn modal-btn-confirm" id="confirmAddCategory">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rename Category Modal -->
+<div class="modal-overlay" id="renameCategoryModal">
+  <div class="modal">
+    <div class="modal-title">重命名分类</div>
+    <input class="modal-input" id="renameCategoryInput" type="text" placeholder="输入新名称..." maxlength="20">
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('renameCategoryModal')">取消</button>
+      <button class="modal-btn modal-btn-confirm" id="confirmRenameCategory">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Category Modal -->
+<div class="modal-overlay" id="deleteCategoryModal">
+  <div class="modal">
+    <div class="modal-title">删除分类</div>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;" id="deleteCategoryMessage">确定要删除此分类吗？分类下的书籍将移到"未分类"。</p>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('deleteCategoryModal')">取消</button>
+      <button class="modal-btn modal-btn-danger" id="confirmDeleteCategory">删除</button>
+    </div>
+  </div>
+</div>
+
+<!-- Category Context Menu -->
+<div class="category-context-menu" id="categoryContextMenu">
+  <button class="category-context-item" id="ctxRenameCategory">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    重命名
+  </button>
+  <button class="category-context-item danger" id="ctxDeleteCategory">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+    删除
+  </button>
+</div>
+
+<!-- Rename Modal -->
+<div class="modal-overlay" id="renameModal">
+  <div class="modal">
+    <div class="modal-title">重命名</div>
+    <input class="modal-input" id="renameInput" type="text" placeholder="输入新名称..." maxlength="100">
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('renameModal')">取消</button>
+      <button class="modal-btn modal-btn-confirm" id="confirmRename">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- Move Category Modal -->
+<div class="modal-overlay" id="moveCategoryModal">
+  <div class="modal">
+    <div class="modal-title">移动到分类</div>
+    <select class="modal-select" id="moveCategorySelect"></select>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('moveCategoryModal')">取消</button>
+      <button class="modal-btn modal-btn-confirm" id="confirmMove">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal">
+    <div class="modal-title">确认删除</div>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;" id="deleteMessage">确定要删除所选书籍吗？此操作不可撤销。</p>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('deleteModal')">取消</button>
+      <button class="modal-btn modal-btn-danger" id="confirmDelete">删除</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Hidden File Input -->
+<input type="file" id="fileInput" accept=".txt" multiple>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
 <script>
-// This is a placeholder. The complete application is in the local bookshelf.html file.
-// Please replace this with the full content from the local file.
-console.log('Bookshelf app - placeholder');
+// ============================================
+// DATABASE
+// ============================================
+const DB_NAME = 'BookShelfDB';
+const DB_VERSION = 1;
+const STORE_BOOKS = 'books';
+const STORE_CATEGORIES = 'categories';
+const STORE_SETTINGS = 'settings';
+
+let db = null;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => { db = request.result; resolve(db); };
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(STORE_BOOKS)) {
+        const bookStore = db.createObjectStore(STORE_BOOKS, { keyPath: 'id' });
+        bookStore.createIndex('category', 'category', { unique: false });
+        bookStore.createIndex('addedAt', 'addedAt', { unique: false });
+      }
+      if (!db.objectStoreNames.contains(STORE_CATEGORIES)) {
+        db.createObjectStore(STORE_CATEGORIES, { keyPath: 'id' });
+      }
+      if (!db.objectStoreNames.contains(STORE_SETTINGS)) {
+        db.createObjectStore(STORE_SETTINGS, { keyPath: 'key' });
+      }
+    };
+  });
+}
+
+function dbTransaction(storeName, mode = 'readonly') {
+  const tx = db.transaction(storeName, mode);
+  return tx.objectStore(storeName);
+}
+
+function dbGetAll(storeName) {
+  return new Promise((resolve, reject) => {
+    const store = dbTransaction(storeName);
+    const req = store.getAll();
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbGet(storeName, key) {
+  return new Promise((resolve, reject) => {
+    const store = dbTransaction(storeName);
+    const req = store.get(key);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbPut(storeName, data) {
+  return new Promise((resolve, reject) => {
+    const store = dbTransaction(storeName, 'readwrite');
+    const req = store.put(data);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbDelete(storeName, key) {
+  return new Promise((resolve, reject) => {
+    const store = dbTransaction(storeName, 'readwrite');
+    const req = store.delete(key);
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+// ============================================
+// APP STATE
+// ============================================
+let books = [];
+let categories = [];
+let currentCategory = 'all';
+let currentSort = 'recent';
+let currentLayout = 'grid';
+let editMode = false;
+let selectedBooks = new Set();
+let currentBookId = null;
+let readerSettings = {
+  fontSize: 18,
+  lineHeight: 1.8,
+  fontFamily: 'sans',
+  theme: ''
+};
+
+// Cover images (3:4 aspect ratio)
+const coverImages = [
+  'covers/cover1.jpg', 'covers/cover2.jpg', 'covers/cover3.jpg', 'covers/cover4.jpg',
+  'covers/cover5.jpg', 'covers/cover6.jpg', 'covers/cover7.jpg', 'covers/cover8.jpg'
+];
+
+function getRandomCover() {
+  return coverImages[Math.floor(Math.random() * coverImages.length)];
+}
+
+// Deterministic cover assignment based on book id
+function getBookCover(book) {
+  if (book.coverImage) return book.coverImage;
+  // Use book.id hash to always return the same cover
+  let hash = 0;
+  for (let i = 0; i < book.id.length; i++) {
+    hash = ((hash << 5) - hash) + book.id.charCodeAt(i);
+    hash |= 0;
+  }
+  return coverImages[Math.abs(hash) % coverImages.length];
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function generateId() {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+}
+
+// ============================================
+// TOAST
+// ============================================
+function showToast(message) {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 2500);
+}
+
+// ============================================
+// MODAL
+// ============================================
+function openModal(id) {
+  document.getElementById(id).classList.add('show');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('show');
+  });
+});
+
+// ============================================
+// CATEGORIES
+// ============================================
+async function loadCategories() {
+  categories = await dbGetAll(STORE_CATEGORIES);
+  if (categories.length === 0) {
+    categories = [
+      { id: 'all', name: '全部', isDefault: true },
+      { id: 'uncategorized', name: '未分类', isDefault: true }
+    ];
+    for (const cat of categories) {
+      await dbPut(STORE_CATEGORIES, cat);
+    }
+  }
+  renderCategories();
+}
+
+function renderCategories() {
+  const bar = document.getElementById('categoryBar');
+  bar.innerHTML = '';
+
+  categories.forEach(cat => {
+    const count = cat.id === 'all'
+      ? books.length
+      : books.filter(b => b.category === cat.id).length;
+
+    const tab = document.createElement('button');
+    tab.className = 'category-tab' + (currentCategory === cat.id ? ' active' : '');
+    tab.innerHTML = `${cat.name}<span class="count">${count}</span>`;
+    tab.addEventListener('click', () => {
+      currentCategory = cat.id;
+      renderCategories();
+      renderBooks();
+    });
+
+    // Right-click context menu for non-default categories
+    if (!cat.isDefault) {
+      tab.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        showCategoryContextMenu(e, cat);
+      });
+    }
+
+    bar.appendChild(tab);
+  });
+
+  // Add category button (only if not in default categories)
+  if (!editMode) {
+    const addBtn = document.createElement('button');
+    addBtn.className = 'category-add-btn';
+    addBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+    addBtn.addEventListener('click', () => {
+      document.getElementById('newCategoryInput').value = '';
+      openModal('addCategoryModal');
+      setTimeout(() => document.getElementById('newCategoryInput').focus(), 100);
+    });
+    bar.appendChild(addBtn);
+  }
+}
+
+// Category context menu
+let contextMenuCatId = null;
+
+function showCategoryContextMenu(e, cat) {
+  contextMenuCatId = cat.id;
+  const menu = document.getElementById('categoryContextMenu');
+  menu.style.left = e.clientX + 'px';
+  menu.style.top = e.clientY + 'px';
+  menu.classList.add('show');
+}
+
+function hideCategoryContextMenu() {
+  document.getElementById('categoryContextMenu').classList.remove('show');
+  contextMenuCatId = null;
+}
+
+document.addEventListener('click', hideCategoryContextMenu);
+
+// Rename category
+document.getElementById('ctxRenameCategory').addEventListener('click', () => {
+  hideCategoryContextMenu();
+  const cat = categories.find(c => c.id === contextMenuCatId);
+  if (!cat) return;
+  document.getElementById('renameCategoryInput').value = cat.name;
+  openModal('renameCategoryModal');
+  setTimeout(() => {
+    const input = document.getElementById('renameCategoryInput');
+    input.focus();
+    input.select();
+  }, 100);
+});
+
+document.getElementById('confirmRenameCategory').addEventListener('click', async () => {
+  const newName = document.getElementById('renameCategoryInput').value.trim();
+  if (!newName) return;
+  const cat = categories.find(c => c.id === contextMenuCatId);
+  if (!cat) return;
+  cat.name = newName;
+  await dbPut(STORE_CATEGORIES, cat);
+  closeModal('renameCategoryModal');
+  renderCategories();
+  renderBooks();
+  showToast('分类已重命名');
+});
+
+document.getElementById('renameCategoryInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('confirmRenameCategory').click();
+});
+
+// Delete category
+document.getElementById('ctxDeleteCategory').addEventListener('click', () => {
+  hideCategoryContextMenu();
+  const cat = categories.find(c => c.id === contextMenuCatId);
+  if (!cat) return;
+  const bookCount = books.filter(b => b.category === cat.id).length;
+  document.getElementById('deleteCategoryMessage').textContent =
+    '确定要删除分类"' + cat.name + '"吗？' + (bookCount > 0 ? '该分类下的 ' + bookCount + ' 本书将移到"未分类"。' : '');
+  openModal('deleteCategoryModal');
+});
+
+document.getElementById('confirmDeleteCategory').addEventListener('click', async () => {
+  const cat = categories.find(c => c.id === contextMenuCatId);
+  if (!cat) return;
+
+  // Move books to uncategorized
+  for (const book of books) {
+    if (book.category === cat.id) {
+      book.category = 'uncategorized';
+      await dbPut(STORE_BOOKS, book);
+    }
+  }
+
+  // Delete category from DB and array
+  await dbDelete(STORE_CATEGORIES, cat.id);
+  categories = categories.filter(c => c.id !== cat.id);
+
+  // If current category was deleted, switch to all
+  if (currentCategory === cat.id) {
+    currentCategory = 'all';
+  }
+
+  closeModal('deleteCategoryModal');
+  renderCategories();
+  renderBooks();
+  showToast('分类已删除');
+});
+
+// Add category
+document.getElementById('confirmAddCategory').addEventListener('click', async () => {
+  const name = document.getElementById('newCategoryInput').value.trim();
+  if (!name) return;
+  if (categories.find(c => c.name === name)) {
+    showToast('分类已存在');
+    return;
+  }
+  const cat = { id: generateId(), name, isDefault: false };
+  categories.push(cat);
+  await dbPut(STORE_CATEGORIES, cat);
+  closeModal('addCategoryModal');
+  renderCategories();
+  showToast('分类已创建');
+});
+
+document.getElementById('newCategoryInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('confirmAddCategory').click();
+});
+
+// ============================================
+// BOOKS
+// ============================================
+async function loadBooks() {
+  books = await dbGetAll(STORE_BOOKS);
+}
+
+function getFilteredBooks() {
+  let filtered = currentCategory === 'all'
+    ? [...books]
+    : books.filter(b => b.category === currentCategory);
+
+  // Sort
+  switch (currentSort) {
+    case 'recent':
+      filtered.sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
+      break;
+    case 'name':
+      filtered.sort((a, b) => a.title.localeCompare(b.title, 'zh-CN'));
+      break;
+    case 'progress':
+      filtered.sort((a, b) => (b.progress || 0) - (a.progress || 0));
+      break;
+    case 'size':
+      filtered.sort((a, b) => (b.fileSize || 0) - (a.fileSize || 0));
+      break;
+  }
+  return filtered;
+}
+
+function renderBooks() {
+  const grid = document.getElementById('bookGrid');
+  const filtered = getFilteredBooks();
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.innerHTML = `
+      <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      </svg>
+      <div class="empty-title">书架空空如也</div>
+      <div class="empty-desc">点击右上角 + 导入你的第一部小说</div>
+      <button class="empty-btn" onclick="document.getElementById('fileInput').click()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        导入小说
+      </button>
+    `;
+    grid.appendChild(empty);
+    return;
+  }
+
+  grid.innerHTML = '';
+  filtered.forEach((book, index) => {
+    const coverSrc = getBookCover(book);
+    const progress = book.progress || 0;
+    const catName = categories.find(c => c.id === book.category)?.name || '未分类';
+
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    card.style.animationDelay = `${index * 0.04}s`;
+    card.dataset.bookId = book.id;
+
+    card.innerHTML = `
+      <div class="book-cover">
+        <img src="${coverSrc}" alt="${escapeHtml(book.title)}" loading="lazy">
+        <div class="book-cover-overlay">
+          <div class="book-cover-title">${book.title}</div>
+        </div>
+        <div class="book-progress-bar">
+          <div class="book-progress-fill" style="width: ${progress}%"></div>
+        </div>
+        <div class="book-checkbox ${selectedBooks.has(book.id) ? 'checked' : ''}" data-book-id="${book.id}"></div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">${book.title}</div>
+        <div class="book-meta">${catName} · ${formatFileSize(book.fileSize || 0)}</div>
+        <div class="book-progress-inline">
+          <div class="book-progress-bar-inline">
+            <div class="book-progress-fill-inline" style="width: ${progress}%"></div>
+          </div>
+          <span class="book-progress-text">${progress}%</span>
+        </div>
+      </div>
+    `;
+
+    // Click to read
+    // Add selected class if needed
+    if (selectedBooks.has(book.id)) card.classList.add('selected');
+
+    card.addEventListener('click', (e) => {
+      if (editMode) {
+        toggleBookSelection(book.id);
+        return;
+      }
+      openReader(book.id);
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+// ============================================
+// IMPORT
+// ============================================
+document.getElementById('btnImport').addEventListener('click', () => {
+  document.getElementById('fileInput').click();
+});
+
+document.getElementById('fileInput').addEventListener('change', async (e) => {
+  const files = Array.from(e.target.files);
+  if (files.length === 0) return;
+
+  let imported = 0;
+  for (const file of files) {
+    if (!file.name.toLowerCase().endsWith('.txt')) continue;
+
+    try {
+      const text = await file.text();
+      const title = file.name.replace(/\.txt$/i, '');
+
+      // Check duplicate
+      const exists = books.find(b => b.title === title);
+      if (exists) {
+        showToast(`"${title}" 已存在`);
+        continue;
+      }
+
+      const book = {
+        id: generateId(),
+        title: title,
+        content: text,
+        fileSize: file.size,
+        category: 'uncategorized',
+        addedAt: Date.now(),
+        progress: 0,
+        lastReadAt: null,
+        lastScrollPos: 0,
+        coverImage: getRandomCover()
+      };
+
+      await dbPut(STORE_BOOKS, book);
+      books.push(book);
+      imported++;
+    } catch (err) {
+      console.error('Import error:', err);
+      showToast(`导入 "${file.name}" 失败`);
+    }
+  }
+
+  // Reset file input
+  e.target.value = '';
+
+  if (imported > 0) {
+    showToast(`成功导入 ${imported} 本书`);
+    renderCategories();
+    renderBooks();
+  }
+});
+
+// ============================================
+// SEARCH
+// ============================================
+const searchOverlay = document.getElementById('searchOverlay');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+document.getElementById('btnSearch').addEventListener('click', () => {
+  searchOverlay.classList.add('show');
+  searchInput.value = '';
+  searchInput.focus();
+  renderSearchResults('');
+});
+
+searchOverlay.addEventListener('click', (e) => {
+  if (e.target === searchOverlay) {
+    searchOverlay.classList.remove('show');
+  }
+});
+
+searchInput.addEventListener('input', (e) => {
+  renderSearchResults(e.target.value);
+});
+
+function renderSearchResults(query) {
+  const q = query.trim().toLowerCase();
+  const results = q ? books.filter(b => b.title.toLowerCase().includes(q)) : books;
+
+  if (results.length === 0) {
+    searchResults.innerHTML = '<div class="search-empty">没有找到相关书籍</div>';
+    return;
+  }
+
+  searchResults.innerHTML = results.map(book => {
+    const coverSrc = getBookCover(book);
+    return `
+      <div class="search-result-item" data-book-id="${book.id}">
+        <div class="search-result-cover" style="background: url('${coverSrc}') center/cover; width:28px; height:50px; border-radius:4px; flex-shrink:0;"></div>
+        <div class="search-result-info">
+          <div class="search-result-title">${book.title}</div>
+          <div class="search-result-meta">${formatFileSize(book.fileSize || 0)}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  searchResults.querySelectorAll('.search-result-item').forEach(item => {
+    item.addEventListener('click', () => {
+      searchOverlay.classList.remove('show');
+      openReader(item.dataset.bookId);
+    });
+  });
+}
+
+// ============================================
+// SORT
+// ============================================
+const sortPanel = document.getElementById('sortPanel');
+
+document.getElementById('btnSort').addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeAllPanels();
+  sortPanel.classList.toggle('show');
+  sortPanel.style.left = e.currentTarget.getBoundingClientRect().left + 'px';
+});
+
+sortPanel.querySelectorAll('.dropdown-item').forEach(item => {
+  item.addEventListener('click', () => {
+    currentSort = item.dataset.sort;
+    sortPanel.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    sortPanel.classList.remove('show');
+    renderBooks();
+  });
+});
+
+// ============================================
+// LAYOUT
+// ============================================
+const layoutPanel = document.getElementById('layoutPanel');
+
+document.getElementById('btnLayout').addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeAllPanels();
+  layoutPanel.classList.toggle('show');
+});
+
+layoutPanel.querySelectorAll('.dropdown-item').forEach(item => {
+  item.addEventListener('click', () => {
+    currentLayout = item.dataset.layout;
+    layoutPanel.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    layoutPanel.classList.remove('show');
+
+    const main = document.getElementById('appMain');
+    main.className = `app-main layout-${currentLayout}`;
+    renderBooks();
+  });
+});
+
+function closeAllPanels() {
+  sortPanel.classList.remove('show');
+  layoutPanel.classList.remove('show');
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-panel') && !e.target.closest('#btnSort') && !e.target.closest('#btnLayout')) {
+    closeAllPanels();
+  }
+});
+
+// ============================================
+// EDIT MODE
+// ============================================
+const editToolbar = document.getElementById('editToolbar');
+
+document.getElementById('btnEdit').addEventListener('click', () => {
+  editMode = !editMode;
+  const btn = document.getElementById('btnEdit');
+  btn.classList.toggle('active', editMode);
+
+  if (editMode) {
+    editToolbar.classList.add('show');
+    document.getElementById('appMain').classList.add('edit-mode');
+  } else {
+    editToolbar.classList.remove('show');
+    document.getElementById('appMain').classList.remove('edit-mode');
+    selectedBooks.clear();
+  }
+  renderBooks();
+});
+
+function toggleBookSelection(bookId) {
+  if (selectedBooks.has(bookId)) {
+    selectedBooks.delete(bookId);
+  } else {
+    selectedBooks.add(bookId);
+  }
+  // Update card visual state without full re-render
+  const card = document.querySelector(`.book-card[data-book-id="${bookId}"]`);
+  if (card) {
+    card.classList.toggle('selected', selectedBooks.has(bookId));
+    const checkbox = card.querySelector('.book-checkbox');
+    if (checkbox) checkbox.classList.toggle('checked', selectedBooks.has(bookId));
+  }
+  // Update select all button state
+  updateEditToolbar();
+}
+
+function updateEditToolbar() {
+  const filtered = getFilteredBooks();
+  const selectAllBtn = document.getElementById('editSelectAll');
+  if (selectAllBtn) {
+    selectAllBtn.textContent = selectedBooks.size === filtered.length ? '取消全选' : '全选';
+  }
+}
+
+// Select All
+document.getElementById('editSelectAll').addEventListener('click', () => {
+  const filtered = getFilteredBooks();
+  const shouldSelectAll = selectedBooks.size !== filtered.length;
+  selectedBooks.clear();
+  if (shouldSelectAll) {
+    filtered.forEach(b => selectedBooks.add(b.id));
+  }
+  // Update all card visual states
+  document.querySelectorAll('.book-card').forEach(card => {
+    const bookId = card.dataset.bookId;
+    card.classList.toggle('selected', selectedBooks.has(bookId));
+    const checkbox = card.querySelector('.book-checkbox');
+    if (checkbox) checkbox.classList.toggle('checked', selectedBooks.has(bookId));
+  });
+  updateEditToolbar();
+});
+
+// Rename
+document.getElementById('editRename').addEventListener('click', () => {
+  if (selectedBooks.size !== 1) {
+    showToast('请选择一本书进行重命名');
+    return;
+  }
+  const bookId = [...selectedBooks][0];
+  const book = books.find(b => b.id === bookId);
+  if (!book) return;
+
+  document.getElementById('renameInput').value = book.title;
+  openModal('renameModal');
+  setTimeout(() => {
+    const input = document.getElementById('renameInput');
+    input.focus();
+    input.select();
+  }, 100);
+});
+
+document.getElementById('confirmRename').addEventListener('click', async () => {
+  const newName = document.getElementById('renameInput').value.trim();
+  if (!newName) return;
+
+  const bookId = [...selectedBooks][0];
+  const book = books.find(b => b.id === bookId);
+  if (!book) return;
+
+  book.title = newName;
+  await dbPut(STORE_BOOKS, book);
+  closeModal('renameModal');
+  renderBooks();
+  showToast('重命名成功');
+});
+
+document.getElementById('renameInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('confirmRename').click();
+});
+
+// Move Category
+document.getElementById('editMove').addEventListener('click', () => {
+  if (selectedBooks.size === 0) {
+    showToast('请先选择书籍');
+    return;
+  }
+
+  const select = document.getElementById('moveCategorySelect');
+  select.innerHTML = '';
+  categories.filter(c => !c.isDefault || c.id === 'uncategorized').forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat.id;
+    opt.textContent = cat.name;
+    select.appendChild(opt);
+  });
+  openModal('moveCategoryModal');
+});
+
+document.getElementById('confirmMove').addEventListener('click', async () => {
+  const catId = document.getElementById('moveCategorySelect').value;
+  for (const bookId of selectedBooks) {
+    const book = books.find(b => b.id === bookId);
+    if (book) {
+      book.category = catId;
+      await dbPut(STORE_BOOKS, book);
+    }
+  }
+  closeModal('moveCategoryModal');
+  selectedBooks.clear();
+  renderCategories();
+  renderBooks();
+  showToast('移动成功');
+});
+
+// Delete
+document.getElementById('editDelete').addEventListener('click', () => {
+  if (selectedBooks.size === 0) {
+    showToast('请先选择书籍');
+    return;
+  }
+  const count = selectedBooks.size;
+  document.getElementById('deleteMessage').textContent = `确定要删除选中的 ${count} 本书吗？此操作不可撤销。`;
+  openModal('deleteModal');
+});
+
+document.getElementById('confirmDelete').addEventListener('click', async () => {
+  for (const bookId of selectedBooks) {
+    await dbDelete(STORE_BOOKS, bookId);
+    books = books.filter(b => b.id !== bookId);
+  }
+  selectedBooks.clear();
+  closeModal('deleteModal');
+  renderCategories();
+  renderBooks();
+  showToast('删除成功');
+});
+
+// ============================================
+// READER
+// ============================================
+const reader = document.getElementById('reader');
+const readerBody = document.getElementById('readerBody');
+const readerContent = document.getElementById('readerContent');
+const readerTitle = document.getElementById('readerTitle');
+const readerProgress = document.getElementById('readerProgress');
+const readerHeader = document.getElementById('readerHeader');
+const readerFooter = document.getElementById('readerFooter');
+
+let currentBook = null;
+let readerVisible = false;
+
+function openReader(bookId) {
+  const book = books.find(b => b.id === bookId);
+  if (!book) return;
+
+  currentBook = book;
+  currentBookId = bookId;
+  readerTitle.textContent = book.title;
+
+  // Show reader immediately for perceived speed
+  reader.classList.add('show');
+  readerVisible = true;
+  document.body.style.overflow = 'hidden';
+
+  // Apply settings first (instant)
+  applyReaderSettings();
+
+  // Render content in next frame (non-blocking)
+  requestAnimationFrame(() => {
+    renderReaderContent(book.content);
+
+    // Restore scroll position after content is rendered
+    requestAnimationFrame(() => {
+      readerContent.scrollTop = book.lastScrollPos || 0;
+    });
+  });
+
+  // Update last read
+  book.lastReadAt = Date.now();
+  dbPut(STORE_BOOKS, book);
+}
+
+function renderReaderContent(text) {
+  if (!text) {
+    readerBody.innerHTML = '<p style="text-align:center;color:var(--text-tertiary);">暂无内容</p>';
+    return;
+  }
+
+  // Use DocumentFragment for faster DOM insertion
+  const fragment = document.createDocumentFragment();
+  const lines = text.split(/\n');
+
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+    if (trimmed) {
+      const p = document.createElement('p');
+      p.textContent = trimmed; // textContent is faster than innerHTML (no HTML parsing)
+      fragment.appendChild(p);
+    }
+  }
+
+  // Clear and append in one operation
+  readerBody.textContent = '';
+  readerBody.appendChild(fragment);
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function closeReader() {
+  // Save progress
+  if (currentBook) {
+    const scrollPos = readerContent.scrollTop;
+    const maxScroll = readerContent.scrollHeight - readerContent.clientHeight;
+    const progress = maxScroll > 0 ? Math.round((scrollPos / maxScroll) * 100) : 0;
+
+    currentBook.lastScrollPos = scrollPos;
+    currentBook.progress = progress;
+    dbPut(STORE_BOOKS, currentBook);
+  }
+
+  reader.classList.remove('show');
+  readerVisible = false;
+  document.body.style.overflow = '';
+  currentBook = null;
+  currentBookId = null;
+  renderBooks();
+}
+
+document.getElementById('readerBack').addEventListener('click', closeReader);
+
+// Track reading progress
+readerContent.addEventListener('scroll', () => {
+  if (!currentBook) return;
+  const scrollPos = readerContent.scrollTop;
+  const maxScroll = readerContent.scrollHeight - readerContent.clientHeight;
+  const progress = maxScroll > 0 ? Math.round((scrollPos / maxScroll) * 100) : 0;
+  readerProgress.textContent = progress + '%';
+});
+
+// Chapter navigation (scroll by large increments)
+document.getElementById('readerPrev').addEventListener('click', () => {
+  readerContent.scrollBy({ top: -readerContent.clientHeight * 0.8, behavior: 'smooth' });
+});
+
+document.getElementById('readerNext').addEventListener('click', () => {
+  readerContent.scrollBy({ top: readerContent.clientHeight * 0.8, behavior: 'smooth' });
+});
+
+// ============================================
+// TABLE OF CONTENTS
+// ============================================
+let tocChapters = [];
+
+function extractChapters(text) {
+  if (!text) return [];
+  const chapters = [];
+  const lines = text.split(/\n/);
+  // Common chapter patterns: 第X章, 第X回, Chapter X, 卷X, etc.
+  const chapterRegex = /^(第[零一二三四五六七八九十百千万\d]+[章节回卷集部篇]|chapter\s+\d+|卷[零一二三四五六七八九十百千万\d]+|序[章言]|楔子|引子|尾声|番外)/i;
+
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+    if (trimmed && chapterRegex.test(trimmed)) {
+      chapters.push({
+        title: trimmed.replace(/^【[^】]*】/, '').trim(),
+        lineIndex: index,
+        charOffset: 0 // will be calculated
+      });
+    }
+  });
+
+  // If no chapters found, split by large sections (every ~3000 chars)
+  if (chapters.length === 0) {
+    const sectionSize = 3000;
+    let pos = 0;
+    let sectionNum = 1;
+    while (pos < text.length) {
+      const end = Math.min(pos + sectionSize, text.length);
+      const sectionText = text.substring(pos, end);
+      // Find a good break point (newline)
+      const breakPoint = sectionText.lastIndexOf('\n');
+      const actualEnd = breakPoint > sectionSize * 0.3 ? pos + breakPoint : end;
+      chapters.push({
+        title: `段落 ${sectionNum}`,
+        lineIndex: -1,
+        charOffset: pos
+      });
+      pos = actualEnd + 1;
+      sectionNum++;
+    }
+  } else {
+    // Calculate char offsets for detected chapters
+    let charPos = 0;
+    let lineIdx = 0;
+    for (const chapter of chapters) {
+      while (lineIdx < chapter.lineIndex && lineIdx < lines.length) {
+        charPos += lines[lineIdx].length + 1;
+        lineIdx++;
+      }
+      chapter.charOffset = charPos;
+    }
+  }
+
+  return chapters;
+}
+
+function renderTOC(filter = '') {
+  const list = document.getElementById('tocList');
+  const q = filter.trim().toLowerCase();
+  const filtered = q ? tocChapters.filter(c => c.title.toLowerCase().includes(q)) : tocChapters;
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="reader-toc-empty">未找到匹配章节</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map((ch, i) => {
+    const isCurrent = getCurrentChapter() === ch;
+    return `<button class="reader-toc-item${isCurrent ? ' current' : ''}" data-char-offset="${ch.charOffset}">${escapeHtml(ch.title)}</button>`;
+  }).join('');
+
+  list.querySelectorAll('.reader-toc-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const offset = parseInt(item.dataset.charOffset);
+      scrollToCharOffset(offset);
+      toggleTOC(false);
+    });
+  });
+}
+
+function getCurrentChapter() {
+  if (!currentBook || tocChapters.length === 0) return null;
+  const scrollPos = readerContent.scrollTop;
+  const maxScroll = readerContent.scrollHeight - readerContent.clientHeight;
+  const progress = maxScroll > 0 ? scrollPos / maxScroll : 0;
+  const totalChars = currentBook.content ? currentBook.content.length : 1;
+  const currentChar = Math.floor(progress * totalChars);
+
+  let current = tocChapters[0];
+  for (const ch of tocChapters) {
+    if (ch.charOffset <= currentChar) current = ch;
+    else break;
+  }
+  return current;
+}
+
+function scrollToCharOffset(charOffset) {
+  if (!currentBook || !currentBook.content) return;
+  const totalChars = currentBook.content.length;
+  const progress = charOffset / totalChars;
+  const maxScroll = readerContent.scrollHeight - readerContent.clientHeight;
+  readerContent.scrollTo({ top: progress * maxScroll, behavior: 'smooth' });
+}
+
+function toggleTOC(show) {
+  const panel = document.getElementById('readerTocPanel');
+  const overlay = document.getElementById('settingsOverlay');
+  if (show === undefined) show = !panel.classList.contains('show');
+
+  if (show) {
+    tocChapters = extractChapters(currentBook ? currentBook.content : '');
+    renderTOC();
+    panel.classList.add('show');
+    overlay.classList.add('show');
+    document.getElementById('tocSearch').value = '';
+    document.getElementById('tocSearch').focus();
+  } else {
+    panel.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+}
+
+document.getElementById('readerTocBtn').addEventListener('click', () => toggleTOC());
+document.getElementById('tocCloseBtn').addEventListener('click', () => toggleTOC(false));
+document.getElementById('settingsOverlay').addEventListener('click', () => {
+  toggleTOC(false);
+  toggleReaderSettings();
+});
+document.getElementById('tocSearch').addEventListener('input', (e) => {
+  renderTOC(e.target.value);
+});
+
+// Toggle header/footer on tap
+let lastTap = 0;
+readerContent.addEventListener('click', (e) => {
+  const now = Date.now();
+  if (now - lastTap < 300) {
+    readerHeader.classList.toggle('hidden');
+    readerFooter.classList.toggle('hidden');
+  }
+  lastTap = now;
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (!readerVisible) return;
+
+  if (e.key === 'Escape') {
+    if (document.getElementById('readerSettings').classList.contains('show')) {
+      toggleReaderSettings();
+    } else {
+      closeReader();
+    }
+  }
+  if (e.key === 'ArrowLeft') {
+    readerContent.scrollBy({ top: -readerContent.clientHeight * 0.8, behavior: 'smooth' });
+  }
+  if (e.key === 'ArrowRight') {
+    readerContent.scrollBy({ top: readerContent.clientHeight * 0.8, behavior: 'smooth' });
+  }
+});
+
+// ============================================
+// READER SETTINGS
+// ============================================
+function toggleReaderSettings() {
+  const panel = document.getElementById('readerSettings');
+  const overlay = document.getElementById('settingsOverlay');
+  panel.classList.toggle('show');
+  overlay.classList.toggle('show');
+}
+
+document.getElementById('readerSettingsBtn').addEventListener('click', toggleReaderSettings);
+document.getElementById('settingsOverlay').addEventListener('click', toggleReaderSettings);
+
+// Font size
+// Font size - use rAF for smooth updates
+let fontSizeRAF = null;
+document.getElementById('settingFontSize').addEventListener('input', (e) => {
+  const newSize = parseInt(e.target.value);
+  document.getElementById('fontSizeValue').textContent = newSize + 'px';
+  // Direct style update (no transition, instant feedback)
+  readerBody.style.fontSize = newSize + 'px';
+  // Debounce save
+  if (fontSizeRAF) cancelAnimationFrame(fontSizeRAF);
+  fontSizeRAF = requestAnimationFrame(() => {
+    readerSettings.fontSize = newSize;
+    saveReaderSettings();
+  });
+});
+
+// Line height
+document.querySelectorAll('[data-line-height]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-line-height]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    readerSettings.lineHeight = parseFloat(btn.dataset.lineHeight);
+    applyReaderSettings();
+    saveReaderSettings();
+  });
+});
+
+// Font family
+document.querySelectorAll('[data-font]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-font]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    readerSettings.fontFamily = btn.dataset.font;
+    applyReaderSettings();
+    saveReaderSettings();
+  });
+});
+
+// Theme
+document.querySelectorAll('[data-theme]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-theme]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    readerSettings.theme = btn.dataset.theme;
+    applyReaderSettings();
+    saveReaderSettings();
+  });
+});
+
+function applyReaderSettings() {
+  readerBody.style.fontSize = readerSettings.fontSize + 'px';
+  readerBody.style.lineHeight = readerSettings.lineHeight;
+
+  const fontMap = {
+    'sans': "'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+    'serif': "'Noto Serif SC', 'Songti SC', 'SimSun', serif",
+    'kai': "'KaiTi', 'STKaiti', 'Kaiti SC', serif",
+    'hei': "'SimHei', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+    'fang': "'FangSong', 'STFangsong', 'FangSong_GB2312', serif",
+    'round': "'YouYuan', 'STXihei', 'Rounded Mplus 1c', sans-serif"
+  };
+  readerBody.style.fontFamily = fontMap[readerSettings.fontFamily] || fontMap['sans'];
+
+  // Theme
+  reader.className = 'reader show ' + (readerSettings.theme || '');
+}
+
+async function saveReaderSettings() {
+  await dbPut(STORE_SETTINGS, { key: 'readerSettings', value: readerSettings });
+}
+
+async function loadReaderSettings() {
+  const result = await dbGet(STORE_SETTINGS, 'readerSettings');
+  if (result && result.value) {
+    readerSettings = { ...readerSettings, ...result.value };
+  }
+  // Update UI
+  document.getElementById('settingFontSize').value = readerSettings.fontSize;
+  document.getElementById('fontSizeValue').textContent = readerSettings.fontSize + 'px';
+
+  document.querySelectorAll('[data-line-height]').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.lineHeight) === readerSettings.lineHeight);
+  });
+  document.querySelectorAll('[data-font]').forEach(b => {
+    b.classList.toggle('active', b.dataset.font === readerSettings.fontFamily);
+  });
+  document.querySelectorAll('[data-theme]').forEach(b => {
+    b.classList.toggle('active', b.dataset.theme === (readerSettings.theme || ''));
+  });
+}
+
+// ============================================
+// DRAG & DROP IMPORT
+// ============================================
+document.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+document.addEventListener('drop', async (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (readerVisible) return;
+
+  const files = Array.from(e.dataTransfer.files).filter(f => f.name.toLowerCase().endsWith('.txt'));
+  if (files.length === 0) return;
+
+  let imported = 0;
+  for (const file of files) {
+    try {
+      const text = await file.text();
+      const title = file.name.replace(/\.txt$/i, '');
+      const exists = books.find(b => b.title === title);
+      if (exists) continue;
+
+      const book = {
+        id: generateId(),
+        title,
+        content: text,
+        fileSize: file.size,
+        category: 'uncategorized',
+        addedAt: Date.now(),
+        progress: 0,
+        lastReadAt: null,
+        lastScrollPos: 0,
+        coverImage: getRandomCover()
+      };
+      await dbPut(STORE_BOOKS, book);
+      books.push(book);
+      imported++;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  if (imported > 0) {
+    showToast(`成功导入 ${imported} 本书`);
+    renderCategories();
+    renderBooks();
+  }
+});
+
+// ============================================
+// INIT
+// ============================================
+async function init() {
+  try {
+    await openDB();
+    await loadCategories();
+    await loadBooks();
+    await loadReaderSettings();
+    renderCategories();
+    renderBooks();
+  } catch (err) {
+    console.error('Init error:', err);
+    showToast('初始化失败，请刷新页面重试');
+  }
+}
+
+init();
 </script>
 </body>
 </html>
